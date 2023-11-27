@@ -49,7 +49,7 @@ public class BlogService {
             // Delete blog from the user list;
 
             blog.getImageList().clear();
-            blogRepository1.save(blog);
+//            blogRepository1.save(blog);
             blogRepository1.deleteById(blogId);
         }
     }
