@@ -39,10 +39,10 @@ public class ImageService {
         if(optionalImage.isPresent()) {
             Image image = optionalImage.get();
             image.setBlog(null);
-//            imageRepository2.save(image);
-            imageRepository2.deleteById(id);
-
+            imageRepository2.save(image);
         }
+        imageRepository2.deleteById(id);
+
     }
 
     public int countImagesInScreen(Integer id, String screenDimensions) {

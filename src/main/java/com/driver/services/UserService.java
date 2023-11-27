@@ -34,9 +34,10 @@ public class UserService {
         if(optionalUser.isPresent()) {
             User user = optionalUser.get();
             user.getBlogList().clear();
-//            userRepository3.save(user);
-            userRepository3.deleteById(user.getId());
+            userRepository3.save(user);
         }
+        userRepository3.deleteById(userId);
+
 
     }
 
