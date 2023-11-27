@@ -37,11 +37,8 @@ public class ImageService {
         // delete this image data from the blog lis for a particular blog
         Optional<Image>optionalImage=imageRepository2.findById(id);
         Image image=optionalImage.get();
-        Blog blog=image.getBlog();
-
-        // Bidirectional Mapping
-        blog.getImageList().remove(image);
-
+        image.setBlog(null);
+        imageRepository2.save(image);
         imageRepository2.deleteById(image.getImageId());
 
 
@@ -55,23 +52,21 @@ public class ImageService {
         Image image=imageOptional.get();
 
         String array[]=image.getDimensions().split("X");
-        String StrLen=array[0];
         String StrWid=array[1];
+        int len=Integer.parseInt(array[0]);
 
-        double len=Double.parseDouble(StrLen);
-        double wid=Double.parseDouble(StrWid);
-        double imageArea=len*wid;
+
+        int wid=Integer.parseInt(array[1]);
+        int imageArea=len*wid;
 
         // decode screendimensions into value
         String[] arrayOfScreen =screenDimensions.split("X");
-        String StrLenScreen=arrayOfScreen[0];
-        String StrWidScreen=arrayOfScreen[1];
 
-        double lenOfScreen=Double.parseDouble(StrLenScreen);
-        double widOfScreen=Double.parseDouble(StrWidScreen);
-        double screenArea=lenOfScreen*widOfScreen;
+        int lenOfScreen=Integer.parseInt(arrayOfScreen[0]);
+        int widOfScreen=Integer.parseInt(arrayOfScreen[1]);
+        int screenArea=lenOfScreen*widOfScreen;
 
-        int noOfImages=(int)(screenArea/imageArea);
+        int noOfImages=(screenArea/imageArea);
 
         return  noOfImages;
     }

@@ -32,24 +32,9 @@ public class UserService {
     public void deleteUser(int userId){
         Optional<User> optionalUser=userRepository3.findById(userId);
         User user=optionalUser.get();
-        if(user.getBlogList().size()>0){
-            // means this user has written some blogs, by deleting this user, and his works should be deleted
-            for(Blog blog: user.getBlogList()){
-                Integer blogId= blog.getBlogId();
-
-                // every blog may have images includes init, if present delete those image from database
-                if(blog.getImageList().size()>0){
-                    for(Image image: blog.getImageList()){
-                        // delete the image from the database;
-                        imageRepository3.deleteById(image.getImageId());
-                    }
-                }
-
-                blogRepository3.deleteById(blog.getBlogId());
-            }
-        }
-         // delete the user
-         userRepository3.deleteById(user.getId());
+        user.getBlogList().clear();
+        userRepository3.save(user);
+        userRepository3.deleteById(user.getId());
 
     }
 

@@ -47,9 +47,8 @@ public class BlogService {
         Blog blog=optionalBlog.get();
         // Delete blog from the user list;
 
-        User user=blog.getUser();
-        user.getBlogList().remove(blog);
-
+        blog.getImageList().clear();
+        blogRepository1.save(blog);
         blogRepository1.deleteById(blogId);
     }
 
