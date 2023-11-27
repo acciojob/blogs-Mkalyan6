@@ -49,7 +49,7 @@ public class UserService {
             }
         }
          // delete the user
-         userRepository3.deleteById(user.getUserId());
+         userRepository3.deleteById(user.getId());
 
     }
 

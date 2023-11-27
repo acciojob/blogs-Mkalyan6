@@ -8,7 +8,7 @@ import java.util.List;
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Integer id;
     private String username;
     private String password;
     private String firstName;
@@ -17,31 +17,8 @@ public class User{
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Blog> blogList=new ArrayList<>();
 
-    public List<Blog> getBlogList() {
-        return blogList;
-    }
-
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-        this.firstName ="test";
-        this.lastName = "test";
-    }
-
-    public User() {
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public void setBlogList(List<Blog> blogList) {
-        this.blogList = blogList;
-    }
-
-    public User(Integer userId, String username, String password, String firstName, String lastName, List<Blog> blogList) {
-        this.userId = userId;
+    public User(Integer id, String username, String password, String firstName, String lastName, List<Blog> blogList) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -49,9 +26,24 @@ public class User{
         this.blogList = blogList;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User() {
     }
+
+    public User(String username, String password) {
+        this.username=username;
+        this.password=password;
+        this.firstName="test";
+        this.lastName="test";
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -82,5 +74,13 @@ public class User{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Blog> getBlogList() {
+        return blogList;
+    }
+
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
     }
 }

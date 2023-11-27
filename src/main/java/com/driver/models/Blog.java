@@ -7,40 +7,69 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
- public class Blog{
+ public class Blog {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer blogId;
-    private  String blogTitle;
-    private String blogContent;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String title;
+    private String content;
     private Date pubDate;
 
     @ManyToOne
     @JoinColumn
     private User user;
 
-    @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
-    private List<Image> imageList=new ArrayList<>();
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
+    private List<Image> imageList = new ArrayList<>();
 
-    public void setBlogId(Integer blogId) {
-        this.blogId = blogId;
-    }
-
-    public void setImageList(List<Image> imageList) {
-        this.imageList = imageList;
-    }
-
-    public Blog(Integer blogId, String blogTitle, String blogContent, Date pubDate, User user, List<Image> imageList) {
-        this.blogId = blogId;
-        this.blogTitle = blogTitle;
-        this.blogContent = blogContent;
+    public Blog(Integer id, String title, String content, Date pubDate, User user, List<Image> imageList) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
         this.pubDate = pubDate;
         this.user = user;
         this.imageList = imageList;
     }
 
-    public List<Image> getImageList() {
-        return imageList;
+    public Blog() {
+    }
+
+    public Blog(String title, String content, Date date) {
+        this.title=title;
+        this.content=content;
+        this.pubDate=date;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
     }
 
     public User getUser() {
@@ -51,43 +80,11 @@ import java.util.List;
         this.user = user;
     }
 
-    public Blog() {
+    public List<Image> getImageList() {
+        return imageList;
     }
 
-
-
-    public Blog(String blogTitle, String blogContent,Date pubDate) {
-//        this.blogId = blogId;
-        this.blogTitle = blogTitle;
-        this.blogContent = blogContent;
-        this.pubDate=pubDate;
-    }
-
-    public Integer getBlogId() {
-        return blogId;
-    }
-    public String getBlogTitle() {
-        return blogTitle;
-    }
-
-    public void setBlogTitle(String blogTitle) {
-        this.blogTitle = blogTitle;
-    }
-
-    public String getBlogContent() {
-        return blogContent;
-    }
-
-    public void setBlogContent(String blogContent) {
-        this.blogContent = blogContent;
-    }
-
-    public Date getPubDate() {
-        return pubDate;
-    }
-
-    public void setPubDate(Date pubDate) {
-        this.pubDate = pubDate;
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
     }
 }
-

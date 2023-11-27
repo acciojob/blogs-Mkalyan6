@@ -8,13 +8,52 @@ import javax.persistence.*;
 public class Image{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer imageId;
-    private String imageDescrip;
-    private String imageDimen;
+    private Integer id;
+    private String description;
+    private String dimensions;
 
     @ManyToOne
     @JoinColumn
     Blog blog;
+
+    public Image(Integer id, String description, String dimensions, Blog blog) {
+        this.id = id;
+        this.description = description;
+        this.dimensions = dimensions;
+        this.blog = blog;
+    }
+
+    public Image() {
+    }
+
+    public Image(String description, String dimensions) {
+        this.description=description;
+        this.dimensions=dimensions;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDimensions() {
+        return dimensions;
+    }
+
+    public void setDimensions(String dimensions) {
+        this.dimensions = dimensions;
+    }
 
     public Blog getBlog() {
         return blog;
@@ -22,43 +61,5 @@ public class Image{
 
     public void setBlog(Blog blog) {
         this.blog = blog;
-    }
-
-    public Image(String imageDescrip, String imageDimen) {
-        this.imageDescrip = imageDescrip;
-        this.imageDimen = imageDimen;
-    }
-
-    public Image(Integer imageId, String imageDescrip, String imageDimen, Blog blog) {
-        this.imageId = imageId;
-        this.imageDescrip = imageDescrip;
-        this.imageDimen = imageDimen;
-        this.blog = blog;
-    }
-
-    public Image() {
-    }
-
-    public void setImageId(Integer imageId) {
-        this.imageId = imageId;
-    }
-
-    public Integer getImageId() {
-        return imageId;
-    }
-    public String getImageDescrip() {
-        return imageDescrip;
-    }
-
-    public void setImageDescrip(String imageDescrip) {
-        this.imageDescrip = imageDescrip;
-    }
-
-    public String getImageDimen() {
-        return imageDimen;
-    }
-
-    public void setImageDimen(String imageDimen) {
-        this.imageDimen = imageDimen;
     }
 }

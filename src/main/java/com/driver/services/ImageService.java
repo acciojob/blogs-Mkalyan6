@@ -42,7 +42,7 @@ public class ImageService {
         // Bidirectional Mapping
         blog.getImageList().remove(image);
 
-        imageRepository2.deleteById(image.getImageId());
+        imageRepository2.deleteById(image.getId());
 
 
     }
@@ -54,7 +54,7 @@ public class ImageService {
         Optional<Image> imageOptional=imageRepository2.findById(id);
         Image image=imageOptional.get();
 
-        String array[]=image.getImageDimen().split("X");
+        String array[]=image.getDimensions().split("X");
         String StrLen=array[0];
         String StrWid=array[1];
 
