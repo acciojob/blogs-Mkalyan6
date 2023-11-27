@@ -40,7 +40,7 @@ public class ImageService {
             Image image = optionalImage.get();
             image.setBlog(null);
             imageRepository2.save(image);
-            imageRepository2.deleteById(image.getImageId());
+            imageRepository2.deleteById(id);
 
         }
     }

@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.driver.repositories")
 public class BlogsApplication {
     public static void main(String[] args) {
         SpringApplication.run(BlogsApplication.class, args);
