@@ -41,15 +41,17 @@ public class BlogService {
 
     }
 
-    public void deleteBlog(int blogId){
+    public void deleteBlog(int blogId) {
         //delete blog and corresponding images
-        Optional<Blog> optionalBlog=blogRepository1.findById(blogId);
-        Blog blog=optionalBlog.get();
-        // Delete blog from the user list;
+        Optional<Blog> optionalBlog = blogRepository1.findById(blogId);
+        if (optionalBlog.isPresent()) {
+            Blog blog = optionalBlog.get();
+            // Delete blog from the user list;
 
-        blog.getImageList().clear();
-        blogRepository1.save(blog);
-        blogRepository1.deleteById(blogId);
+            blog.getImageList().clear();
+            blogRepository1.save(blog);
+            blogRepository1.deleteById(blogId);
+        }
     }
 
 

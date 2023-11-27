@@ -36,12 +36,13 @@ public class ImageService {
     public void deleteImage(Integer id){
         // delete this image data from the blog lis for a particular blog
         Optional<Image>optionalImage=imageRepository2.findById(id);
-        Image image=optionalImage.get();
-        image.setBlog(null);
-        imageRepository2.save(image);
-        imageRepository2.deleteById(image.getImageId());
+        if(optionalImage.isPresent()) {
+            Image image = optionalImage.get();
+            image.setBlog(null);
+            imageRepository2.save(image);
+            imageRepository2.deleteById(image.getImageId());
 
-
+        }
     }
 
     public int countImagesInScreen(Integer id, String screenDimensions) {
@@ -53,20 +54,18 @@ public class ImageService {
 
         String array[]=image.getDimensions().split("X");
         String StrWid=array[1];
-        int len=Integer.parseInt(array[0]);
+        int lenOfImage=Integer.parseInt(array[0]);
 
 
-        int wid=Integer.parseInt(array[1]);
-        int imageArea=len*wid;
+        int widOfImage=Integer.parseInt(array[1]);
 
         // decode screendimensions into value
         String[] arrayOfScreen =screenDimensions.split("X");
 
         int lenOfScreen=Integer.parseInt(arrayOfScreen[0]);
         int widOfScreen=Integer.parseInt(arrayOfScreen[1]);
-        int screenArea=lenOfScreen*widOfScreen;
 
-        int noOfImages=(screenArea/imageArea);
+        int noOfImages=(lenOfScreen/lenOfImage)*(widOfScreen/widOfImage);
 
         return  noOfImages;
     }

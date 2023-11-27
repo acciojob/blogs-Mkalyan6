@@ -31,10 +31,12 @@ public class UserService {
 
     public void deleteUser(int userId){
         Optional<User> optionalUser=userRepository3.findById(userId);
-        User user=optionalUser.get();
-        user.getBlogList().clear();
-        userRepository3.save(user);
-        userRepository3.deleteById(user.getId());
+        if(optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.getBlogList().clear();
+            userRepository3.save(user);
+            userRepository3.deleteById(user.getId());
+        }
 
     }
 
