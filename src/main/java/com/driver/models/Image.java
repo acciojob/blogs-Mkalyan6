@@ -31,11 +31,11 @@ public class Image{
         this.dimensions=dimensions;
     }
 
-    public Integer getId() {
+    public Integer getImageId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setImageId(Integer id) {
         this.id = id;
     }
 

@@ -42,7 +42,7 @@ public class ImageService {
         // Bidirectional Mapping
         blog.getImageList().remove(image);
 
-        imageRepository2.deleteById(image.getId());
+        imageRepository2.deleteById(image.getImageId());
 
 
     }

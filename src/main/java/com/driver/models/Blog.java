@@ -40,11 +40,11 @@ import java.util.List;
         this.pubDate=date;
     }
 
-    public Integer getId() {
+    public Integer getBlogId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setBlogId(Integer id) {
         this.id = id;
     }
 
