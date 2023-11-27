@@ -29,6 +29,9 @@ public class User{
         this.lastName = "test";
     }
 
+    public User() {
+    }
+
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
