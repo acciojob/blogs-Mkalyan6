@@ -22,6 +22,23 @@ import java.util.List;
     @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
     private List<Image> imageList=new ArrayList<>();
 
+    public void setBlogId(Integer blogId) {
+        this.blogId = blogId;
+    }
+
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
+    }
+
+    public Blog(Integer blogId, String blogTitle, String blogContent, Date pubDate, User user, List<Image> imageList) {
+        this.blogId = blogId;
+        this.blogTitle = blogTitle;
+        this.blogContent = blogContent;
+        this.pubDate = pubDate;
+        this.user = user;
+        this.imageList = imageList;
+    }
+
     public List<Image> getImageList() {
         return imageList;
     }

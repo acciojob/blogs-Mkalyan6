@@ -29,7 +29,18 @@ public class Image{
         this.imageDimen = imageDimen;
     }
 
+    public Image(Integer imageId, String imageDescrip, String imageDimen, Blog blog) {
+        this.imageId = imageId;
+        this.imageDescrip = imageDescrip;
+        this.imageDimen = imageDimen;
+        this.blog = blog;
+    }
+
     public Image() {
+    }
+
+    public void setImageId(Integer imageId) {
+        this.imageId = imageId;
     }
 
     public Integer getImageId() {

@@ -29,6 +29,23 @@ public class User{
         this.lastName = "test";
     }
 
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
+    }
+
+    public User(Integer userId, String username, String password, String firstName, String lastName, List<Blog> blogList) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.blogList = blogList;
+    }
+
     public Integer getUserId() {
         return userId;
     }
