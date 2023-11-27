@@ -35,7 +35,11 @@ public class Image{
         return id;
     }
 
-    public void setImageId(Integer id) {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
         this.id = id;
     }
 
